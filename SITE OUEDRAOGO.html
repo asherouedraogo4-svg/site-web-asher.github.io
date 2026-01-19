@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>OUEDRAOGO Restaurant | Cuisine africaine raffinée</title>
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family: Arial, sans-serif;background:#eaf6f6;color:#222;font-size:18px;line-height:1.5;}
+        h1,h2,h3,p{text-align:center;}
+        header{background:#2e7d32;color:white;padding:60px 20px;}
+        nav{background:#4caf50;padding:12px 15px;position:sticky;top:0;z-index:40;display:flex;justify-content:center;gap:18px;flex-wrap:wrap;}
+        nav a{color:white;margin:0 8px;font-weight:700;text-decoration:none;padding:6px 10px;border-radius:6px;}
+        nav a:hover, nav a.active{background:rgba(255,255,255,0.12);text-decoration:underline;}
+        section{padding:50px 20px;}
+        .center{text-align:center;}
+        img{display:block;margin:20px auto;border-radius:12px;max-width:100%;height:auto;}
+        .menu-box{background:white;width:70%;margin:20px auto;padding:25px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.15);}
+        ul{list-style:none;text-align:center;}
+        ul li{padding:6px 0;}
+        .gallery{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;}
+        .gallery img{width:280px;cursor:pointer;transition:transform .2s, box-shadow .2s;}
+        .gallery img:hover{transform:scale(1.03);box-shadow:0 8px 25px rgba(0,0,0,0.25);}
+        form{width:60%;margin:auto;background:white;padding:30px;border-radius:15px;box-shadow:0 5px 15px rgba(0,0,0,0.15);}
+        input,textarea{width:100%;padding:12px;margin-bottom:15px;border:1px solid #ddd;border-radius:8px;font-size:16px;}
+        input[type="submit"]{background:#2e7d32;color:white;border:none;font-weight:bold;cursor:pointer;padding:12px 18px;border-radius:8px;}
+        input[type="submit"]:hover{background:#1b5e20;}
+        .cta{background:#c8e6c9;padding:40px;text-align:center;}
+        footer{background:#2e7d32;color:white;padding:20px;text-align:center;}
+        @media(max-width:768px){.menu-box,form{width:90%;}.gallery img{width:90%;}}
+        /* Lightbox */
+        .lightbox{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.85);z-index:60;opacity:0;pointer-events:none;transition:opacity .25s;}
+        .lightbox.open{opacity:1;pointer-events:auto;}
+        .lightbox-content{max-width:95%;max-height:90%;position:relative;}
+        .lightbox-content img{max-width:100%;max-height:80vh;border-radius:10px;display:block;margin:0 auto;}
+        .lightbox-close,.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.5);color:white;border:none;padding:10px;border-radius:6px;cursor:pointer;}
+        .lightbox-close{right:12px;top:12px;transform:none;}
+        .lightbox-nav.left{left:12px;}
+        .lightbox-nav.right{right:12px;}
+        .lightbox-caption{color:white;text-align:center;margin-top:10px;}
+        /* Back to top */
+        .back-to-top{position:fixed;right:18px;bottom:18px;background:#2e7d32;color:white;padding:10px 12px;border-radius:50%;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.25);display:none;z-index:70;}
+        .back-to-top.show{display:block;}
+        /* small toast */
+        .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:30px;background:#333;color:white;padding:12px 18px;border-radius:10px;z-index:80;opacity:0;transition:opacity .2s;}
+        .toast.show{opacity:1;}
+        /* small improvements */
+        .required{color:#d32f2f;}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🍽 OUEDRAOGO Restaurant 🍽</h1>
+    <p>Restaurant gastronomique africain</p>
+</header>
+
+<nav aria-label="Navigation principale" class="center" id="mainNav">
+    <a href="#presentation">Présentation</a>
+    <a href="#menu">Menu</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="presentation">
+    <h2>Présentation</h2>
+    <p>Bienvenue à <strong>OUEDRAOGO Restaurant</strong>. Nous proposons une cuisine africaine raffinée préparée avec des produits frais et locaux.</p>
+    <!-- Remplacez le chemin ci-dessous par un chemin relatif: ex: images/restaurant.jpg -->
+    <img src="C:\Users\Labdoo\Desktop\images\WhatsApp Image 2025-11-26 à 20.47.49_2f570ef5.jpg" width="400" alt="Restaurant" loading="lazy">
+</section>
+
+<section id="menu">
+    <h2>Notre Menu</h2>
+
+    <div class="menu-box" aria-labelledby="entrées">
+        <h3 id="entrées">Entrées</h3>
+        <ul>
+            <li>Soupe de légumes — 30 dh</li>
+            <li>Alloco — 25 dh</li>
+            <li>Salade marocaine — 25 dh</li>
+        </ul>
+    </div>
+
+    <div class="menu-box" aria-labelledby="plats">
+        <h3 id="plats">Plats</h3>
+        <ul>
+            <li>Poulet flambé — 35 dh</li>
+            <li>Tchep — 33 dh</li>
+            <li>Foutou banane — 40 dh</li>
+            <li>Garba — 30 dh</li>
+            <li>Placali — 35 dh</li>
+        </ul>
+    </div>
+
+    <div class="menu-box" aria-labelledby="desserts">
+        <h3 id="desserts">Desserts</h3>
+        <ul>
+            <li>Bofloto — 14 dh</li>
+            <li>Fondant au chocolat — 12 dh</li>
+        </ul>
+    </div>
+</section>
+
+<section id="galerie">
+    <h2>Galerie Photos</h2>
+    <div class="gallery center" aria-live="polite" id="gallery">
+        <!-- Remplacez les chemins ci-dessous par des chemins relatifs (ex: images/fu.jpg) -->
+        <img src="C:\Users\Labdoo\Desktop\images\FU.jpg" alt="Plat" class="gallery-img" data-index="0" loading="lazy">
+        <img src="C:\Users\Labdoo\Desktop\images\tchep.jpg" alt="Tchep" class="gallery-img" data-index="1" loading="lazy">
+        <img src="C:\Users\Labdoo\Desktop\images\poulet.jpg" alt="Poulet" class="gallery-img" data-index="2" loading="lazy">
+        <img src="C:\Users\Labdoo\Desktop\images\garba.jpg" alt="Garba" class="gallery-img" data-index="3" loading="lazy">
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Réserver une table</h2>
+    <p>Contactez-nous dès maintenant sur WhatsApp</p>
+    <p><strong>📞 <a href="https://wa.me/22661414834" target="_blank" rel="noopener noreferrer" style="color:#064; text-decoration:underline;">+226 61 41 48 34</a></strong></p>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <form id="contactForm" novalidate>
+        <label class="sr-only">Votre nom <span class="required">*</span></label>
+        <input type="text" id="name" name="name" placeholder="Votre nom (obligatoire)" required aria-required="true">
+        <input type="email" id="email" name="email" placeholder="Votre email (obligatoire)" required aria-required="true">
+        <textarea id="message" name="message" rows="5" placeholder="Votre message (optionnel)"></textarea>
+        <input type="submit" value="Envoyer">
+    </form>
+
+    <p class="center" style="margin-top:20px;">
+        Téléphone : +226 61 41 48 34<br>
+        Adresse : 15 Rue du Soleil, Casablanca
+    </p>
+</section>
+
+<footer>
+    <p>© 2025 OUEDRAOGO Restaurant — Tous droits réservés</p>
+</footer>
+
+<!-- Lightbox / Modal -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content" id="lightboxContent">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Fermer la fenêtre">✕</button>
+        <button class="lightbox-nav left" id="lightboxPrev" aria-label="Image précédente">◀</button>
+        <img src="" alt="" id="lightboxImage">
+        <button class="lightbox-nav right" id="lightboxNext" aria-label="Image suivante">▶</button>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Remonter en haut">↑</button>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* JavaScript intégré — fonctionnalités :
+   - Smooth scroll
+   - Active nav link during scroll
+   - Back-to-top button
+   - Lightbox gallery with keyboard support
+   - Form validation + simulated submit + localStorage
+   - Small analytics (console) for clicks
+   - Accessibility improvements (focus management)
+*/
+
+(function(){
+    // Identify root elements
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const backToTop = document.getElementById('backToTop');
+    const toast = document.getElementById('toast');
+
+    // Smooth scroll for nav links
+    navLinks.forEach(a=>{
+        a.addEventListener('click', function(e){
+            e.preventDefault();
+            const targetId = this.getAttribute('href').slice(1);
+            const target = document.getElementById(targetId);
+            if(target){
+                target.scrollIntoView({behavior:'smooth', block:'start'});
+                history.replaceState(null, '', '#' + targetId);
+                // small "analytics"
+                console.log('Nav click:', targetId);
+            }
+        });
+    });
+
+    // Highlight active nav item on scroll
+    function onScroll(){
+        const fromTop = window.scrollY + 100;
+        let currentId = sections[0] ? sections[0].id : '';
+        for (let sec of sections) {
+            if (sec.offsetTop <= fromTop) currentId = sec.id;
+        }
+        navLinks.forEach(link=>{
+            link.classList.toggle('active', link.getAttribute('href') === '#' + currentId);
+        });
+
+        // Back to top toggle
+        if(window.scrollY > 400) backToTop.classList.add('show'); else backToTop.classList.remove('show');
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    // Back to top button behavior
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    // Lightbox gallery
+    const galleryImgs = document.querySelectorAll('.gallery-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    let currentIndex = 0;
+
+    const updateLightbox = (index) => {
+        const img = galleryImgs[index];
+        if(!img) return;
+        currentIndex = index;
+        // Use natural src, you may switch to higher-res version if available
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt || '';
+        lightboxCaption.textContent = img.alt || '';
+    };
+
+    const openLightbox = (startIndex=0) => {
+        updateLightbox(startIndex);
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+        // trap focus to close button
+        lightboxClose.focus();
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+    };
+
+    galleryImgs.forEach((img, idx)=>{
+        img.addEventListener('click', ()=> openLightbox(idx));
+        img.addEventListener('keydown', (e)=> {
+            if(e.key === 'Enter' || e.key === ' ') openLightbox(idx);
+        });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', ()=> updateLightbox((currentIndex -1 + galleryImgs.length)%galleryImgs.length));
+    lightboxNext.addEventListener('click', ()=> updateLightbox((currentIndex +1)%galleryImgs.length));
+
+    // Keyboard navigation for lightbox and close on overlay click
+    document.addEventListener('keydown', (e)=>{
+        if(lightbox.classList.contains('open')){
+            if(e.key === 'Escape') closeLightbox();
+            if(e.key === 'ArrowLeft') lightboxPrev.click();
+            if(e.key === 'ArrowRight') lightboxNext.click();
+        }
+    });
+    lightbox.addEventListener('click', (e)=>{
+        if(e.target === lightbox) closeLightbox(); // click outside content closes
+    });
+
+    // Form handling: validation + simulated send + save to localStorage
+    const form = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+
+    // Prefill from localStorage if available
+    try {
+        const saved = JSON.parse(localStorage.getItem('ouedraogo_contact') || '{}');
+        if(saved.name) nameInput.value = saved.name;
+        if(saved.email) emailInput.value = saved.email;
+    } catch(e){
+        console.warn('localStorage not available', e);
+    }
+
+    function showToast(msg, duration=3000){
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(()=> toast.classList.remove('show'), duration);
+    }
+
+    function validateEmail(email){
+        // simple regex
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    form.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
+
+        if(!name){
+            showToast('Veuillez entrer votre nom.');
+            nameInput.focus();
+            return;
+        }
+        if(!validateEmail(email)){
+            showToast('Veuillez entrer une adresse e-mail valide.');
+            emailInput.focus();
+            return;
+        }
+
+        // disable while "sending"
+        const submitBtn = form.querySelector('input[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.value = 'Envoi...';
+
+        // Save to localStorage for convenience
+        try {
+            localStorage.setItem('ouedraogo_contact', JSON.stringify({name, email}));
+        } catch(e){
+            console.warn('Impossible de sauvegarder en localStorage', e);
+        }
+
+        // Simulate sending (replace with fetch to backend if available)
+        setTimeout(()=>{
+            submitBtn.disabled = false;
+            submitBtn.value = 'Envoyer';
+            form.reset();
+            // restore saved name/email if desired (we saved earlier)
+            try{
+                const saved = JSON.parse(localStorage.getItem('ouedraogo_contact') || '{}');
+                if(saved.name) nameInput.value = saved.name;
+                if(saved.email) emailInput.value = saved.email;
+            }catch(e){}
+
+            showToast('Merci ! Votre message a été envoyé (simulation). Nous vous répondrons bientôt.');
+            console.log('Form data (simulated send):', {name, email, message});
+        }, 900); // simulate small delay
+    });
+
+    // Small accessibility: focus outline for keyboard users
+    (function keyboardFocusHandler(){
+        const body = document.body;
+        function handleFirstTab(e){
+            if(e.key === 'Tab'){
+                body.classList.add('user-is-tabbing');
+                window.removeEventListener('keydown', handleFirstTab);
+            }
+        }
+        window.addEventListener('keydown', handleFirstTab);
+    })();
+
+    // Small analytics for clicks (console only)
+    document.addEventListener('click', (e)=>{
+        const t = e.target;
+        if(t.tagName === 'A' && t.href) {
+            console.log('Link clicked:', t.href);
+        }
+    });
+
+    // IntersectionObserver to add subtle animation when sections come in view (optional)
+    const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+            if(entry.isIntersecting){
+                entry.target.classList.add('in-view');
+            }
+        });
+    }, {threshold:0.15});
+    document.querySelectorAll('section').forEach(s=> io.observe(s));
+
+    // On load: if URL has hash, scroll smoothly to it
+    window.addEventListener('load', ()=>{
+        const h = location.hash;
+        if(h){
+            const el = document.querySelector(h);
+            if(el) setTimeout(()=> el.scrollIntoView({behavior:'smooth', block:'start'}), 200);
+        }
+    });
+
+})(); // end IIFE
+</script>
+</body>
+</html>
+
